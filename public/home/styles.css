@@ -1,0 +1,115 @@
+body {
+  background-color: #eeeeee;
+  /* position: relative; */
+  margin: 0;
+  min-height: 100%;
+}
+
+.logoText {
+  background-color: #f7faff7a !important;
+  padding: 0.5em;
+  border-radius: 15px;
+  padding-right: 1em;
+  margin-left: 10%;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.titlePage {
+  font-size: 25px;
+  text-transform: uppercase;
+  font-family: segoe ui;
+}
+
+.navbarTotal {
+  padding: 0px !important;
+}
+
+.topCard {
+  display: flex;
+  padding: 5em;
+}
+
+.card {
+  border-radius: 25px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);;
+}
+
+.card .card-header {
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.bottomCard {
+  display: flex;
+  padding: 0 5em 5em 5em;
+}
+
+.bottomCard .first {
+  margin-left: 10%;
+}
+
+.bottomCard .final {
+  margin-right: 10%;
+}
+
+.buttonCard  {
+  margin-bottom: 0.5em;
+  border-radius: 25px;
+  width: 120%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+  background-color: #0000006e;
+  border-style: none;
+}
+
+.buttonCard:hover {
+  background-color: black;
+}
+
+.buttonCard:active {
+  background-color: black;
+}
+
+
+footer {
+  color: #4f4f4f !important;
+  /* position: absolute; */
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.align-items-center a {
+  color: #FFFFFF !important;
+}
+
+.align-items-center a:hover {
+  color: rgb(93, 228, 154) !important;
+}
+
+footer.page-footer .footer-copyright {
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+footer a {
+  color: #4f4f4f !important;
+  text-decoration: none !important;
+}
+
+footer a:hover {
+  color: #4265d66e !important;
+  text-decoration: none !important;
+}
+
+.fa-brain {
+  color: yellow;
+}
+
+.fa-heart {
+  color: red;
+}

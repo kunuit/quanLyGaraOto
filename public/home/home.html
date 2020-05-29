@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <!-- Bootstrap - 4  -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- font Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <!-- icon font-awesome -->
+  <script src="https://kit.fontawesome.com/4f433ce5a6.js" crossorigin="anonymous"></script>
+  <!-- my css -->
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+  <!-- Image and text -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary navbarTotal">
+    <a class="navbar-brand logoText" href="#">
+      <img src="https://getbootstrap.com/docs/4.0/components/navbar/docs/4.0/assets/brand/bootstrap-solid.svg"
+        width="30" height="30" class="d-inline-block align-top" alt="">
+      G5
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active titlePage" href="#">Trang chủ<span class="sr-only">(current)</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="bodyMain">
+
+    <div class="topCard justify-content-around">
+      <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header text-center">Tiếp nhận xe sửa chữa</div>
+        <div class="card-body">
+          <p class="card-text">Nhập các thông tin về xe, chủ xe và ngày tiếp nhận,...</p>
+        </div>
+        <a href="../FixCar/FixCar.html" class="mx-auto aCard">
+          <button type='button' class="btn btn-dark btn-lg buttonCard">Xem</button>
+        </a>
+      </div>
+      <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+        <div class="card-header text-center">Phiếu Sửa Chữa</div>
+        <div class="card-body">
+          <p class="card-text">Nhập nội dung, vật tư phụ tùng, số lượng, tiền công,...</p>
+        </div>
+        <a href="#" class="mx-auto aCard">
+          <button type='button' class="btn btn-dark btn-lg buttonCard">Xem</button>
+        </a>
+      </div>
+      <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+        <div class="card-header text-center">Danh Sách Các Xe</div>
+        <div class="card-body">
+          <p class="card-text">Cung cấp thông tin về xe cần tra cứu ...</p>
+        </div>
+        <a href="../ListCar/ListCar.html" class="mx-auto aCard">
+          <button type='button' class="btn btn-dark btn-lg buttonCard">Xem</button>
+        </a>
+      </div>
+    </div>
+
+    
+
+    <div class="bottomCard justify-content-around">
+      <div class="card text-white bg-danger mb-3 first" style="max-width: 18rem;">
+        <div class="card-header text-center">Phiếu Thu Tiền</div>
+        <div class="card-body">
+          <p class="card-text">Nhập vào thông tin xe, chủ xe, ngày thu để làm hiện phiếu thu tiền...</p>
+        </div>
+        <a href="../BillCar/billCar.html" class="mx-auto aCard">
+          <button type='button' class="btn btn-dark btn-lg buttonCard">Xem</button>
+        </a>
+      </div>
+      <div class="card text-white bg-warning mb-3 final" style="max-width: 18rem;">
+        <div class="card-header text-center">Báo Cáo Doanh Thu</div>
+        <div class="card-body">
+          <p class="card-text">Nhập vào tháng cần lập báo cáo để xuất ra thông tin cần thiết ...</p>
+        </div>
+        <a href="#" class="mx-auto aCard">
+          <button type='button' class="btn btn-dark btn-lg buttonCard">Xem</button>
+        </a>
+      </div>
+      <!-- <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+        <div class="card-header text-center">Header</div>
+        <div class="card-body">
+          <h5 class="card-title">Info card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div> -->
+    </div>
+
+  </div>
+  <footer class="page-footer font-small unique-color-dark">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">©
+      <script>
+        document.write(new Date().getFullYear())
+      </script>
+      , made with
+      <i class="fas fa-brain"></i>
+      and
+      <i class="fas fa-heart"></i>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Bootstrap 4 -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <!-- my js -->
+  <script src="./home.js"></script>
+</body>
+
+</html>
