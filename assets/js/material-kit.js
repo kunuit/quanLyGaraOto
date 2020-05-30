@@ -271,10 +271,10 @@ $(document).ready(function() {
     $(this).parent().siblings().trigger('focusout');
   });
 
-  // Activate bootstrap-select
-  if ($(".selectpicker").length != 0) {
-    $(".selectpicker").selectpicker();
-  }
+  // // Activate bootstrap-select
+  // if ($(".selectpicker").length != 0) {
+  //   $(".selectpicker").selectpicker();
+  // }
 
   // Activate Popovers
   $('[data-toggle="popover"]').popover();

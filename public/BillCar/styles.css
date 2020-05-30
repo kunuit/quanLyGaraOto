@@ -83,7 +83,7 @@ footer a:hover {
   background-color: white;
   border-radius: 25px;
   box-shadow: 1px 5px 20px 1px #888888;
-  margin: 2em auto;
+  margin: 3em auto;
 }
 
 .mainBody form {
@@ -94,22 +94,6 @@ footer a:hover {
   padding-bottom: 2em;
 }
 
-
-/* .row .first {
-  width: 40% !important;
-}
-
-.row .second {
-  width: 30% !important;
-}
-
-.row .item-one {
-  width: 30%;
-}
-
-.row .item-two {
-  width: 60%;
-} */
 
 .form-group .error {
   color: red;
@@ -227,4 +211,12 @@ footer a:hover {
   top: 0;
   padding: auto;
   margin: auto;
+}
+
+.dropdown-menu {
+  transform: none !important;
+}
+
+.title-form {
+  padding-bottom: 2em;
 }

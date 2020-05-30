@@ -1,90 +1,75 @@
 const arrInfoXe = [
   {
-    bienSo: '29A-999.90',
-    email: 'abc@gmail.com',
-    sdt: '0123456789',
-    tenChuXe: 'Vũ Xuân Cường',
-    tienNo: '3.000.000'
+    bienSo: "29A-999.90",
+    email: "abc@gmail.com",
+    sdt: "0123456789",
+    tenChuXe: "Vũ Xuân Cường",
+    tienNo: "3000000",
   },
   {
-    bienSo: '29A-999.91',
-    email: 'abc@gmail.com',
-    sdt: '0123456789',
-    tenChuXe: 'Vũ Xuân Cường',
-    tienNo: '3.000.000'
+    bienSo: "29A-999.91",
+    email: "abc@gmail.com",
+    sdt: "0123456789",
+    tenChuXe: "Vũ Xuân Cường",
+    tienNo: "3000000",
   },
   {
-    bienSo: '29A-999.92',
-    email: 'abc@gmail.com',
-    sdt: '0123456789',
-    tenChuXe: 'Vũ Xuân Cường',
-    tienNo: '3.000.000'
+    bienSo: "29A-999.92",
+    email: "abc@gmail.com",
+    sdt: "0123456789",
+    tenChuXe: "Vũ Xuân Cường",
+    tienNo: "3000000",
   },
   {
-    bienSo: '29A-999.93',
-    email: 'abc@gmail.com',
-    sdt: '0123456789',
-    tenChuXe: 'Vũ Xuân Cường',
-    tienNo: '3.000.000'
+    bienSo: "29A-999.93",
+    email: "abc@gmail.com",
+    sdt: "0123456789",
+    tenChuXe: "Vũ Xuân Cường",
+    tienNo: "3000000",
   },
   {
-    bienSo: '29A-999.90',
-    email: 'abc@gmail.com',
-    sdt: '0123456789',
-    tenChuXe: 'Vũ Xuân Cường',
-    tienNo: '3.000.000'
+    bienSo: "29A-999.94",
+    email: "abc@gmail.com",
+    sdt: "0123456789",
+    tenChuXe: "Vũ Xuân Cường",
+    tienNo: "3000000",
   },
   {
-    bienSo: '29A-999.91',
-    email: 'abc@gmail.com',
-    sdt: '0123456789',
-    tenChuXe: 'Vũ Xuân Cường',
-    tienNo: '3.000.000'
+    bienSo: "29A-999.95",
+    email: "abc@gmail.com",
+    sdt: "0123456789",
+    tenChuXe: "Vũ Xuân Cường",
+    tienNo: "3000000",
   },
   {
-    bienSo: '29A-999.92',
-    email: 'abc@gmail.com',
-    sdt: '0123456789',
-    tenChuXe: 'Vũ Xuân Cường',
-    tienNo: '3.000.000'
+    bienSo: "29A-999.96",
+    email: "abc@gmail.com",
+    sdt: "0123456789",
+    tenChuXe: "Vũ Xuân Cường",
+    tienNo: "3000000",
   },
   {
-    bienSo: '29A-999.93',
-    email: 'abc@gmail.com',
-    sdt: '0123456789',
-    tenChuXe: 'Vũ Xuân Cường',
-    tienNo: '3.000.000'
+    bienSo: "29A-999.97",
+    email: "abc@gmail.com",
+    sdt: "0123456789",
+    tenChuXe: "Vũ Xuân Cường",
+    tienNo: "3000000",
   },
   {
-    bienSo: '29A-999.90',
-    email: 'abc@gmail.com',
-    sdt: '0123456789',
-    tenChuXe: 'Vũ Xuân Cường',
-    tienNo: '3.000.000'
+    bienSo: "29A-999.98",
+    email: "abc@gmail.com",
+    sdt: "0123456789",
+    tenChuXe: "Vũ Xuân Cường",
+    tienNo: "3000000",
   },
   {
-    bienSo: '29A-999.91',
-    email: 'abc@gmail.com',
-    sdt: '0123456789',
-    tenChuXe: 'Vũ Xuân Cường',
-    tienNo: '3.000.000'
+    bienSo: "29A-999.99",
+    email: "abc@gmail.com",
+    sdt: "0123456789",
+    tenChuXe: "Vũ Xuân Cường",
+    tienNo: "3000000",
   },
-  {
-    bienSo: '29A-999.92',
-    email: 'abc@gmail.com',
-    sdt: '0123456789',
-    tenChuXe: 'Vũ Xuân Cường',
-    tienNo: '3.000.000'
-  },
-  {
-    bienSo: '29A-999.93',
-    email: 'abc@gmail.com',
-    sdt: '0123456789',
-    tenChuXe: 'Vũ Xuân Cường',
-    tienNo: '3.000.000'
-  },
-  
-]
+];
 
 const checkNull = (data, nameTag) => {
   $(`.${nameTag}`).empty();
@@ -94,6 +79,18 @@ const checkNull = (data, nameTag) => {
   }
 };
 
+// trả về 1 object infoXe :v hoi chuoi 1 tý
+const timInfo = (bienSoCanTim) => {
+  return arrInfoXe.filter((item) => item.bienSo === bienSoCanTim)[0];
+};
+
+const themInfo = (info) => {
+  $("#tenChuXe").val(info.tenChuXe);
+  $("#sdt").val(info.sdt);
+  $("#email").val(info.email);
+  $("#soTienNo").val(info.tienNo);
+};
+
 $(document).ready(function () {
   //init DateTimePickers
   materialKit.initFormExtendedDatetimepickers();
@@ -101,66 +98,48 @@ $(document).ready(function () {
   // Sliders Init
   // materialKit.initSliders();
 
+  $(function () {
+    $("select").selectpicker();
+  });
+
+  $("select").on("change", async function (e) {
+    const val = this.value;
+    const info = await timInfo(val);
+    themInfo(info);
+  });
+
   arrInfoXe.map((item) => {
-    console.log(item)
     $(".bienSoSelection").append(`<option>${item.bienSo}</option>`);
   });
 
-  // $(".maxTiepNhan").append(`<span>${maxXeTiepNhan}</span>`);
-  // $(".soXeDaTiepNhan").append(`<span>${soXeDaTiepNhan}</span>`);
-  // try {
-  //   $("#xacNhanTiepNhanXe").click(function (e) {
-  //     let tenChuXe = $("#tenChuXe").val();
-  //     let bienSo = $("#bienSo").val();
-  //     let sdt = $("#sdt").val();
-  //     let email = $("#email").val();
-  //     let hieuXe = $("#hieuXe").val();
-  //     let ngayTiepNhan = $("#ngayTiepNhan").val();
-  //     let diaChi = $("#diaChi").val();
-  //     e.preventDefault();
-  //     console.log(
-  //       "data: ",
-  //       tenChuXe,
-  //       bienSo,
-  //       sdt,
-  //       email,
-  //       hieuXe,
-  //       sdt,
-  //       ngayTiepNhan,
-  //       diaChi
-  //     );
-  //     checkNull(tenChuXe, "err-tenChuXe");
-  //     checkNull(bienSo, "err-bienSo");
-  //     checkNull(sdt, "err-sdt");
-  //     checkNull(email, "err-email");
-  //     checkNull(hieuXe, "err-hieuXe");
-  //     checkNull(ngayTiepNhan, "err-ngayTiepNhan");
-  //     checkNull(diaChi, "err-diaChi");
-  //   });
+  try {
+    $("#xacNhanThuTien").click(async function (e) {
+      let tenChuXe = $("#tenChuXe").val();
+      let bienSo = $("#bienSo").val();
+      let sdt = $("#sdt").val();
+      let email = $("#email").val();
+      let ngayThuTien = $("#ngayThuTien").val();
+      let soTienThu = $("#soTienThu").val();
+      let soTienNo = $("#soTienNo").val();
+      e.preventDefault();
 
-  //   $(".buttonNewHieuXe").click(function (e) {
-  //     let newHieuXe = $("#newHieuXe").val();
-  //     e.preventDefault();
-  //     console.log("hieu xe moi: ", newHieuXe);
-  //     checkNull(newHieuXe, "err-newHieuXe");
-  //     $('.buttonNewHieuXe').attr('data-dismiss','modal')
-  //   });
+      checkNull(tenChuXe, "err-tenChuXe");
+      checkNull(bienSo, "err-bienSo");
+      checkNull(sdt, "err-sdt");
+      checkNull(email, "err-email");
+      checkNull(soTienNo, "err-soTienNo");
+      checkNull(ngayThuTien, "err-ngayThuTien");
+      checkNull(soTienThu, "err-soTienThu");
 
-  //   $(".buttoneditMaxXe").click(function (e) {
-  //     let editMaxXe = $("#editMaxXe").val();
-  //     e.preventDefault();
-  //     console.log("số xe tối đa: ", editMaxXe);
-  //     checkNull(editMaxXe, "err-editMaxXe");
-  //     $('.buttoneditMaxXe').attr('data-dismiss','modal')
-  //     $(".maxTiepNhan").empty()
-  //     $(".maxTiepNhan").append(`<span>${editMaxXe}</span>`);
-  //   });
+      const info = await timInfo(bienSo);
+      if (soTienThu > info.tienNo) {
+        $(`.err-soTienThu`).append(`! tiền thu <= tiền nợ`);
+        throw new Error({ errForm: "Thu <= No" });
+      }
 
-  //   $(".themHieuXe").click(function (e) {
-  //     e.preventDefault();
-  //     console.log("xu xy them hieu xe");
-  //   });
-  // } catch (error) {
-  //   console.log(error);
-  // }
+      console.log("tien hanh gửi qua back-end");
+    });
+  } catch (error) {
+    console.log(error);
+  }
 });
