@@ -119,3 +119,7 @@ tbody tr:hover {
   padding: auto;
   margin: auto;
 }
+
+.formHead input {
+  width: 250px !important;
+}

@@ -41,8 +41,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active titlePage" href="#">Tiếp nhận xe sửa chữa<span
-            class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link active titlePage" href="#">Tra cứu xe<span class="sr-only">(current)</span></a>
       </div>
     </div>
   </nav>
@@ -50,19 +49,20 @@
   <!-- Main body -->
   <div class="mainBody">
     <div class="col-lg-8 col-md-10 ml-auto mr-auto">
-      <form class="form-inline ml-auto  mb-0">
-        <div class="form-group bmd-form-group">
-          <input type="text" class="form-control" placeholder="Tìm theo biển số">
-        </div>
-        <button type="submit" class="btn btn-raised btn-fab btn-round">
-          <i class="material-icons">search</i>
-        </button>
-        <h2 class="text-center w-50">
-          Danh sách các xe
-        </h2>
-      </form>
-      <div class="paginationHeader m-0">
-        <ul class="pagination pagination-info justify-content-end mb-1">
+      <h2 class="text-center">
+        Danh sách các xe
+      </h2>
+
+      <div class="paginationHeader d-flex justify-content-between">
+        <form class="form-inline mt-2 formHead">
+          <div class="form-group bmd-form-group">
+            <input type="text" class="form-control" placeholder="Tìm theo biển số, tên chủ xe, hiệu xe">
+          </div>
+          <button type="submit" class="btn btn-raised btn-fab btn-round">
+            <i class="material-icons">search</i>
+          </button>
+        </form>
+        <ul class="pagination pagination-info mb-1 pt-5">
           <li class="page-item">
             <a href="javascript:void(0);" class="page-link"> prev</a>
           </li>
