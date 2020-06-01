@@ -16,7 +16,8 @@ $(document).ready(function () {
   materialKit.initFormExtendedDatetimepickers();
 
   // Sliders Init
-  // materialKit.initSliders();
+  // materialKit.initSliders()
+  ;
 
   arrXe.map((item) => {
     $(".xeSelection").append(`<option>${item}</option>`);
@@ -52,6 +53,11 @@ $(document).ready(function () {
       checkNull(hieuXe, "err-hieuXe");
       checkNull(ngayTiepNhan, "err-ngayTiepNhan");
       checkNull(diaChi, "err-diaChi");
+      Toastify({
+        text: "Tiếp nhận thành công",
+        backgroundColor: "#0000008f",
+        className: "info",
+      }).showToast();
     });
 
     $(".buttonNewHieuXe").click(function (e) {
@@ -59,6 +65,11 @@ $(document).ready(function () {
       e.preventDefault();
       console.log("hieu xe moi: ", newHieuXe);
       checkNull(newHieuXe, "err-newHieuXe");
+      Toastify({
+        text: "Thêm hiệu xe thành công",
+        backgroundColor: "#0000008f",
+        className: "info",
+      }).showToast();
       $('.buttonNewHieuXe').attr('data-dismiss','modal')
     });
 
@@ -69,6 +80,11 @@ $(document).ready(function () {
       checkNull(editMaxXe, "err-editMaxXe");
       $('.buttoneditMaxXe').attr('data-dismiss','modal')
       $(".maxTiepNhan").empty()
+      Toastify({
+        text: "Thay đổi số xe tối đa thành công",
+        backgroundColor: "#0000008f",
+        className: "info",
+      }).showToast();
       $(".maxTiepNhan").append(`<span>${editMaxXe}</span>`);
     });
 

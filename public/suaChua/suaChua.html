@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phiếu sửa chữa</title>
+  <!-- Bootstrap - 4  -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- font Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+  <!-- CSS Files -->
+  <link href="../../assets/css/material-kit.css?v=2.1.1" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="../../assets/demo/demo.css" rel="stylesheet" />
+  <link href="../../assets/demo/vertical-nav.css" rel="stylesheet" />
+  <!-- icon font-awesome -->
+  <script src="https://kit.fontawesome.com/4f433ce5a6.js" crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+  <!-- toastify -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <!-- my css -->
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+  <!-- Image and text -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary navbarTotal">
+    <a class="navbar-brand logoText" href="../home/home.html" data-toggle="tooltip" data-placement="bottom" title
+      data-container="body" data-original-title="Trang chủ">
+      <img src="https://getbootstrap.com/docs/4.0/components/navbar/docs/4.0/assets/brand/bootstrap-solid.svg"
+        width="30" height="30" class="d-inline-block align-top" alt="">
+      G5
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active titlePage" href="#">Phiếu sửa chữa<span class="sr-only">(current)</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main body -->
+  <div class="mainBody">
+    <div class="mainLeft">
+      <form action="">
+        <div class="header-form text-center">
+          <div class="title-form">
+            <h2>Phiếu sửa chữa</h2>
+            <p>Thông tin sửa chữa chi tiết của xe</p>
+          </div>
+        </div>
+        <div class="row justify-content-around">
+          <div class="form-group first">
+            <label for="bienSo">Biển số: </label>
+            <select class="selectpicker bienSoSelection" data-max-options="1" data-size="5" data-live-search="true"
+              name="bienSo" id="bienSo">
+              <option>Biển số cần tìm</option>
+              <!-- js add option -->
+            </select>
+          </div>
+          <div class="form-group thirt item-one">
+            <label for="ngaySuaChua">Ngày sửa chữa</label>
+            <input type="text" class="form-control datepicker" id="ngaySuaChua" name="ngaySuaChua">
+            <div class="error err-ngaySuaChua"></div>
+          </div>
+        </div>
+        <!-- table sua chua  -->
+        <div class="tableSuaChua">
+          <div class="tagButtonAdd d-flex justify-content-end">
+            <button class="addNoiDung btn btn-rose btn-sm mr-4 mt-2" data-toggle="modal" data-target="#ThemMoiNoiDung">
+              <i class="fas fa-plus mr-2"></i>thêm nội dung
+            </button>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="text-center">Stt</th>
+                  <th class="text-center">Nội dung</th>
+                  <th class="text-center">Vật tư phụ tùng</th>
+                  <th class="text-center">Số lượng</th>
+                  <th class="text-center">Đơn giá</th>
+                  <th class="text-center">Tiền công</th>
+                  <th class="text-center">Thành tiền</th>
+                </tr>
+              </thead>
+              <div class="scroll">
+
+                <tbody class="tbody mainTable">
+                  <!-- js render tr mainTable -->
+                </tbody>
+              </div>
+            </table>
+          </div>
+          <div class="d-flex justify-content-lg-end mr-4">
+            <h4 class="font-weight-bold">Tổng tiền: <span class="tongTien">0</span> VNĐ</h4>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success float-right" id="taoPhieuSuaChua">Tạo</button>
+        </div>
+
+        <!-- modal -->
+        <div class="modal fade" id="ThemMoiNoiDung" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-small" role="document">
+            <div class="modal-content">
+              <div class="modal-body text-center text-white">
+                <h3>Thêm nội dung</h3>
+              </div>
+              <div class="form-group">
+                <label for="themNoiDung">Nội dung</label>
+                <input type="text" class="form-control" name="themNoiDung" id="themNoiDung" aria-describedby="helpId"
+                  placeholder="Số bạn muốn ?">
+                <div class="error err-themNoiDung"></div>
+              </div>
+              <div class="form-group">
+                <label for="themVatTuPhuTung">Vật tư phụ tùng </label>
+                <select class="selectpicker themVatTuPhuTungSelection" data-max-options="1" data-size="5" data-live-search="true"
+                  name="themVatTuPhuTung" id="themVatTuPhuTung">
+                  <option>chọn ....</option>
+                  <!-- js add option -->
+                </select>
+              </div>
+             <div class="form-group">
+               <label for="themDonGia">Đơn giá</label>
+               <input type="number"
+                 class="form-control" name="themDonGia" id="themDonGia" aria-describedby="helpId" readonly>
+                 <div class="error err-themDonGia"></div>
+             </div>
+             <div class="form-group">
+               <label for="themSoLuong">Số lượng</label>
+               <input type="number"
+                 class="form-control" name="themSoLuong" id="themSoLuong" aria-describedby="helpId" placeholder="">
+                 <div class="error err-themSoLuong"></div>
+             </div>
+             <div class="form-group">
+              <label for="themTienCong">Tiền công</label>
+              <select class="selectpicker themTienCongSelection" data-max-options="1" data-size="4" data-live-search="true"
+                name="themTienCong" id="themTienCong">
+                <option>chọn ....</option>
+                <!-- js add option -->
+              </select>
+            </div>
+              <div class="modal-footer justify-content-end">
+                <button type="button" class="btn btn-white btn-sm mr-2" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-success btn-sm ml-2 buttonThemNoiDung">Thêm Mới</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--    end them moi noi dung modal -->
+      </form>
+    </div>
+    <div class="mainRight">
+      <div class="rightTop">
+        <div class="rotating-card-container" style="margin-bottom: 30px;">
+          <div class="card card-rotate card-background abc">
+            <div class="front front-background"
+              style="background-image: url('https://images.unsplash.com/photo-1448376561459-dbe8868fa34c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'); width: 350px;">
+              <div class="card-body">
+                <div class="cardTop">
+
+                  <a href="#pablo">
+                    <h3 class="card-title">Số loại vật tư phụ tùng</h3>
+                  </a>
+                  <button class="soLoaiVatTuPhuTung btn-just-icon btn-round">
+                    <!-- tag số loại vật tư phụ tùng -->
+                  </button>
+                </div>
+                <div class="d-flex justify-content-around text-white conLai">
+                  <h3>Số loại tiền công</h3>
+                  <button class="soLoaiTienCong  btn-just-icon btn-round ml-2">
+                    <!-- tag số loại tiền công -->
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="back back-background"
+              style="background-image: url('https://images.unsplash.com/7/sunset-hair.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80'); width: 350px;">
+              <div class="card-body">
+                <h5 class="card-title">
+                  Xem và sửa danh sách vật tư phụ tùng
+                </h5>
+                <p class="card-description">Thêm Xóa Sửa</p>
+                <div class="circle">
+                  <button class="btn btn-success btn-just-icon btn-round cog  btn-click" data-toggle="modal"
+                    data-target="#EditVatTuPhuTung">
+                    <i class="fas fa-cog"></i>
+                  </button>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rightBottom">
+        <div class="editTienCong text-center" data-toggle="modal" data-target="#EditTienCong">
+          <div class="card-title"> Xem và sửa tiền công</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- edit vật tư phụ tùng modal -->
+<div class="modal fade" id="EditVatTuPhuTung" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center text-white">
+        <h3>Danh sách vật tư phụ tùng</h3>
+      </div>
+      <div class="tagButtonAdd d-flex justify-content-end">
+        <button class="addVatTuPhuTung btn btn-rose btn-sm mr-4 mt-2" data-toggle="modal" data-target="#AddVatTuPhuTung">
+          <i class="fas fa-plus mr-2"></i>thêm vật tư phụ tùng
+        </button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="text-center">Stt</th>
+              <th class="text-center">Vật tư phụ tùng</th>
+              <th class="text-center">Đơn giá</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="tbody vatTuPhuTungTable">
+            <!-- js render tr table -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer justify-content-end">
+        <button type="button" class="btn btn-white btn-sm mr-2" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-success btn-sm ml-2 buttonEditVTPT">Xong</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--    end edit vật tư phụ tùng modal -->
+
+ <!-- add vat tư phụ tùng mới  -->
+  <div class="modal fade" id="AddVatTuPhuTung" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-small" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center text-white">
+          <h3>Thêm mới vật tư phụ tùng mới</h3>
+        </div>
+        <div class="form-group mb-2">
+          <label for="tenVatTuPhuTungMoi">Tên</label>
+          <input type="text" class="form-control" name="tenVatTuPhuTungMoi" id="tenVatTuPhuTungMoi" aria-describedby="helpId"
+            placeholder="là ...">
+          <div class="error err-tenVatTuPhuTungMoi"></div>
+        </div>
+        <div class="form-group mb-2">
+          <label for="donGiaMoi">Đơn giá</label>
+          <input type="text" class="form-control" name="donGiaMoi" id="donGiaMoi" aria-describedby="helpId"
+            placeholder="là ...">
+          <div class="error err-donGiaMoi"></div>
+        </div>
+        <div class="modal-footer justify-content-end">
+          <button type="button" class="btn btn-white btn-sm mr-2" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-success btn-sm ml-2 buttonAddVatTuPhuTung">Thêm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!-- end add vat tư phụ tùng mới  -->
+
+ <!-- edit Tiền Công modal -->
+<div class="modal fade" id="EditTienCong" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center text-white">
+        <h3>Danh sách tiền công</h3>
+      </div>
+      <div class="tagButtonAdd d-flex justify-content-end">
+        <button class="addTienCong btn btn-rose btn-sm mr-4 mt-2" data-toggle="modal" data-target="#AddTienCong">
+          <i class="fas fa-plus mr-2"></i>thêm loại tiền công
+        </button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="text-center">Stt</th>
+              <th class="text-center">Tên tiền công</th>
+              <th class="text-center">Giá công</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="tbody tienCongTable">
+            <!-- js render tr table -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer justify-content-end">
+        <button type="button" class="btn btn-white btn-sm mr-2" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-success btn-sm ml-2 buttonEditTC">Xong</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--    end edit vật tư phụ tùng modal -->
+
+ <!-- add vat tư phụ tùng mới  -->
+  <div class="modal fade" id="AddTienCong" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-small" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center text-white">
+          <h3>Thêm loại tiền công mới</h3>
+        </div>
+        <div class="form-group mb-2">
+          <label for="tenTienCongMoi">Tên</label>
+          <input type="text" class="form-control" name="tenTienCongMoi" id="tenTienCongMoi" aria-describedby="helpId"
+            placeholder="là ...">
+          <div class="error err-tenTienCongMoi"></div>
+        </div>
+        <div class="form-group mb-2">
+          <label for="giaCongMoi">Giá công</label>
+          <input type="text" class="form-control" name="giaCongMoi" id="giaCongMoi" aria-describedby="helpId"
+            placeholder="là ...">
+          <div class="error err-giaCongMoi"></div>
+        </div>
+        <div class="modal-footer justify-content-end">
+          <button type="button" class="btn btn-white btn-sm mr-2" data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-success btn-sm ml-2 buttonAddTienCong">Thêm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ <!-- end add vat tư phụ tùng mới  -->
+<div class="modalAdd">
+  <!-- js add modal -->
+</div>
+
+
+  <!-- footer - end -->
+  <footer class="page-footer font-small unique-color-dark ">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">©
+      <script>
+        document.write(new Date().getFullYear())
+      </script>
+      , made with
+      <i class="fas fa-brain"></i>
+      and
+      <i class="fas fa-heart"></i>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Bootstrap 4 -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <!--   Core JS Files   -->
+  <script src="../../assets/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="../../assets/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="../../assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+  <script src="../../assets/js/plugins/moment.min.js"></script>
+  <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+  <script src="../../assets/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script> <!-- my js -->
+  <!-- Js With initialisations For Demo Purpose, Don't Include it in Your Project -->
+  <script src="../../assets/demo/demo.js" type="text/javascript"></script>
+  <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
+  <script src="../../assets/js/material-kit.js?v=2.1.1" type="text/javascript"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+  <!-- toastify-js -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="./suaChua.js"></script>
+</body>
+
+</html>

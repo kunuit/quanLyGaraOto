@@ -1,0 +1,256 @@
+body {
+  background-color: #eeeeee;
+  /* position: relative; */
+  margin: 0;
+  min-height: 100%;
+}
+
+.navbar.bg-primary {
+  background-color: #007bff !important;
+}
+
+.logoText {
+  background-color: #f7faff7a !important;
+  padding: 0.5em !important;
+  border-radius: 15px;
+  padding-right: 1em !important;
+  margin-left: 10% !important;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 400 !important;
+  font-size: 20px !important
+}
+
+.navbar-nav .titlePage {
+  font-weight: 400 !important;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-family: segoe ui !important;
+}
+
+.navbarTotal {
+  padding: 0px !important;
+}
+
+footer {
+  color: #4f4f4f !important;
+  /* position: absolute; */
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-copyright {
+  width: 100% !important;
+}
+
+.align-items-center a {
+  color: #FFFFFF !important;
+}
+
+.align-items-center a:hover {
+  color: rgb(93, 228, 154) !important;
+}
+
+footer.page-footer .footer-copyright {
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+footer a {
+  color: #4f4f4f !important;
+  text-decoration: none !important;
+}
+
+footer a:hover {
+  color: #4265d66e !important;
+  text-decoration: none !important;
+}
+
+.fa-brain {
+  color: yellow;
+}
+
+.fa-heart {
+  color: red;
+}
+
+.mainBody {
+  display: flex
+}
+
+.mainLeft {
+  width: 60%;
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: 1px 5px 20px 1px #888888;
+  margin: 3% 5% !important;
+  padding: 0 2% 2% 2%;
+}
+
+.tableSuaChua {
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 5px 20px 1px #888888;
+  margin: 1em 0 !important;
+}
+
+.row .first {
+  width: 40% !important;
+}
+
+.row .second {
+  width: 30% !important;
+}
+
+.row .item-one {
+  width: 20%;
+}
+
+.row .item-two {
+  width: 60%;
+}
+
+.form-group .error {
+  color: red;
+  padding-left: 2%;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* right Top */
+
+.rotating-card-container .abc {
+  box-shadow: 1px 5px 20px 1px #888888;
+}
+
+.cardTop {
+  margin: -10px 0 20px 0;
+  background-color: #0000008f;
+  border-radius: 25px;
+  box-shadow: 0px 1px 20px 2px #ffffff;
+  padding: 1em;
+}
+
+.card-tile {
+  font-weight: 600 !important;
+  font-family: "Roboto Slab", "Times New Roman", serif;
+}
+
+.soLoaiVatTuPhuTung {
+  margin: 10px auto;
+  background-color: #00fffff3;
+  padding: 10px;
+  box-shadow: 0px 1px 20px 2px #ffffff;
+  width: auto;
+  border-radius: 25px;
+  font-weight: 700;
+  border-style: none;
+}
+
+.conLai {
+  margin: 20px 0 0 0;
+  padding: 20px;
+  width: auto;
+  border-radius: 25px;
+  box-shadow: 0px 1px 20px 2px #ffffff;
+}
+
+.conLai h3 {
+  font-weight: 500;
+  font-family: "Roboto Slab", "Times New Roman", serif;
+  margin: auto;
+}
+
+.soLoaiTienCong {
+  margin: auto;
+  padding: 10px;
+  width: auto;
+  background-color: #ffe600d9;
+  box-shadow: 0px 1px 20px 2px #ffffff;
+  border-radius: 25px;
+  border-style: none;
+  border-style: none !important;
+  font-weight: 700;
+}
+
+.circle:hover .cog:hover {
+  transform: rotate(180deg);
+  transition: ease-in-out 0.5s;
+}
+
+/* right Bottom */
+
+.editTienCong {
+  background-color: #03030326;
+  margin: 20%;
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 1px 5px 20px 1px #888888;
+  cursor: pointer;
+}
+
+.editTienCong:hover {
+  box-shadow: 1px 5px 25px 2px #888888;
+}
+
+.editTienCong:active {
+  background-color: #888888;
+}
+
+.editTienCong .card-title {
+  padding: auto;
+  margin: 0 !important;
+}
+
+.modal .form-group {
+  width: 80%;
+  padding: auto;
+  margin: auto;
+}
+
+.modal-content {
+  border-radius: 25px !important;
+}
+
+.modal-body {
+  margin: 0;
+  padding: 8px !important;
+  background-color: rgba(0, 46, 250, 0.836);
+  border-radius: 25px !important;
+  box-shadow: 1px 5px 20px 1px #888888;
+  margin-bottom: 20px;
+}
+
+.modal-body h3 {
+  font-size: 20px;
+  left: 0;
+  top: 0;
+  padding: auto;
+  margin: auto;
+}
+
+.dropdown-menu {
+  transform: none !important;
+}
+
+.title-form {
+  padding-bottom: 2em;
+}
+
+#themDonGia {
+  width: auto;
+}
+
+thead {
+  background-color: cyan;
+}
+
+.table-responsive {
+  max-height: 300px;
+}

@@ -136,8 +136,13 @@ $(document).ready(function () {
         $(`.err-soTienThu`).append(`! tiền thu <= tiền nợ`);
         throw new Error({ errForm: "Thu <= No" });
       }
-
+      
       console.log("tien hanh gửi qua back-end");
+      Toastify({
+        text: "Thu tiền thành công",
+        backgroundColor: "#0000008f",
+        className: "primary",
+      }).showToast();
     });
   } catch (error) {
     console.log(error);
