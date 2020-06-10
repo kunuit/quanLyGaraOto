@@ -1,76 +1,15 @@
-const arrInfoXe = [
-  {
-    bienSo: "29A-999.90",
-    email: "abc@gmail.com",
-    sdt: "0123456789",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3000000",
-  },
-  {
-    bienSo: "29A-999.91",
-    email: "abc@gmail.com",
-    sdt: "0123456789",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3000000",
-  },
-  {
-    bienSo: "29A-999.92",
-    email: "abc@gmail.com",
-    sdt: "0123456789",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3000000",
-  },
-  {
-    bienSo: "29A-999.93",
-    email: "abc@gmail.com",
-    sdt: "0123456789",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3000000",
-  },
-  {
-    bienSo: "29A-999.94",
-    email: "abc@gmail.com",
-    sdt: "0123456789",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3000000",
-  },
-  {
-    bienSo: "29A-999.95",
-    email: "abc@gmail.com",
-    sdt: "0123456789",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3000000",
-  },
-  {
-    bienSo: "29A-999.96",
-    email: "abc@gmail.com",
-    sdt: "0123456789",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3000000",
-  },
-  {
-    bienSo: "29A-999.97",
-    email: "abc@gmail.com",
-    sdt: "0123456789",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3000000",
-  },
-  {
-    bienSo: "29A-999.98",
-    email: "abc@gmail.com",
-    sdt: "0123456789",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3000000",
-  },
-  {
-    bienSo: "29A-999.99",
-    email: "abc@gmail.com",
-    sdt: "0123456789",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3000000",
-  },
-];
+function thuTien (info) {
+  const {bienSo, soTienThu} = info
+  oTo.createBill({
+    bienSo,
+    tienThu: +soTienThu
+  }).then(data => location.reload())
+}
 
+async function main () {
+
+  const getXe = await oTo.getAllXe()
+  const arrInfoXe = getXe.data.data
 const checkNull = (data, nameTag) => {
   $(`.${nameTag}`).empty();
   if (data.trim() == "" || data == null) {
@@ -81,14 +20,14 @@ const checkNull = (data, nameTag) => {
 
 // trả về 1 object infoXe :v hoi chuoi 1 tý
 const timInfo = (bienSoCanTim) => {
-  return arrInfoXe.filter((item) => item.bienSo === bienSoCanTim)[0];
+  return arrInfoXe.filter((item) => item.BienSoXe === bienSoCanTim)[0];
 };
 
 const themInfo = (info) => {
-  $("#tenChuXe").val(info.tenChuXe);
-  $("#sdt").val(info.sdt);
-  $("#email").val(info.email);
-  $("#soTienNo").val(info.tienNo);
+  $("#tenChuXe").val(info.TenChuXe);
+  $("#sdt").val(info.SoDT);
+  $("#email").val(info.Email);
+  $("#soTienNo").val(info.TienNo);
 };
 
 $(document).ready(function () {
@@ -109,7 +48,7 @@ $(document).ready(function () {
   });
 
   arrInfoXe.map((item) => {
-    $(".bienSoSelection").append(`<option>${item.bienSo}</option>`);
+    $(".bienSoSelection").append(`<option>${item.BienSoXe}</option>`);
   });
 
   try {
@@ -136,8 +75,7 @@ $(document).ready(function () {
         $(`.err-soTienThu`).append(`! tiền thu <= tiền nợ`);
         throw new Error({ errForm: "Thu <= No" });
       }
-      
-      console.log("tien hanh gửi qua back-end");
+      thuTien({bienSo,soTienThu});
       Toastify({
         text: "Thu tiền thành công",
         backgroundColor: "#0000008f",
@@ -148,3 +86,7 @@ $(document).ready(function () {
     console.log(error);
   }
 });
+
+}
+
+main()

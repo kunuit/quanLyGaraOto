@@ -1,6 +1,40 @@
-const arrXe = ["Ford", "Toyota", "vinfast"];
+function themMoiHieuXe(hieuXe) {
+  oTo.createHX({hieuXe}).then(data => {
+    main()
+  })
+}
 
-const maxXeTiepNhan = 30;
+function suaTiepNhanXeToiDa(giaTriThamSo){
+  oTo.updateMax({tenThamSo: 'soXeSuaChuaToiDa', giaTriThamSo: +giaTriThamSo}).then(data => {
+    main()
+  })
+}
+
+function tiepNhanXe(info){
+  const {bienSo,tenChuXe,sdt,diaChi,email,hieuXe,ngayTiepNhan} = info
+  oTo.createFix({
+    bienSoXe: bienSo,
+    tenChuXe,
+    sdt,
+    diaChi,
+    email,
+    maHX: hieuXe,
+    ngayTiepNhan
+  }).then(data => {
+    location.reload()
+  })
+}
+
+async function main () {
+  console.log('run main')
+
+const getHX = await oTo.getHX();
+const arrHX = getHX.data.data
+console.log(arrHX)
+
+const getMax = await oTo.getMax();
+console.log(getMax)
+const maxXeTiepNhan = getMax.data.data.GiaTriThamSo;
 const soXeDaTiepNhan = 20;
 
 const checkNull = (data, nameTag) => {
@@ -17,13 +51,12 @@ $(document).ready(function () {
 
   // Sliders Init
   // materialKit.initSliders()
-  ;
-
-  arrXe.map((item) => {
-    $(".xeSelection").append(`<option>${item}</option>`);
+  arrHX.map((item) => {
+    $(".xeSelection").append(`<option value='${item.MaHX}'>${item.TenHX}</option>`);
   });
-
+  $(".maxTiepNhan").empty();
   $(".maxTiepNhan").append(`<span>${maxXeTiepNhan}</span>`);
+  $(".soXeDaTiepNhan").empty()
   $(".soXeDaTiepNhan").append(`<span>${soXeDaTiepNhan}</span>`);
   try {
     $("#xacNhanTiepNhanXe").click(function (e) {
@@ -53,6 +86,7 @@ $(document).ready(function () {
       checkNull(hieuXe, "err-hieuXe");
       checkNull(ngayTiepNhan, "err-ngayTiepNhan");
       checkNull(diaChi, "err-diaChi");
+      tiepNhanXe({tenChuXe,bienSo,sdt,email,hieuXe,sdt,ngayTiepNhan,diaChi})
       Toastify({
         text: "Tiếp nhận thành công",
         backgroundColor: "#0000008f",
@@ -63,36 +97,37 @@ $(document).ready(function () {
     $(".buttonNewHieuXe").click(function (e) {
       let newHieuXe = $("#newHieuXe").val();
       e.preventDefault();
-      console.log("hieu xe moi: ", newHieuXe);
       checkNull(newHieuXe, "err-newHieuXe");
+      themMoiHieuXe(newHieuXe)
       Toastify({
         text: "Thêm hiệu xe thành công",
         backgroundColor: "#0000008f",
         className: "info",
       }).showToast();
-      $('.buttonNewHieuXe').attr('data-dismiss','modal')
+      $(".buttonNewHieuXe").attr("data-dismiss", "modal");
     });
 
     $(".buttoneditMaxXe").click(function (e) {
       let editMaxXe = $("#editMaxXe").val();
       e.preventDefault();
-      console.log("số xe tối đa: ", editMaxXe);
       checkNull(editMaxXe, "err-editMaxXe");
-      $('.buttoneditMaxXe').attr('data-dismiss','modal')
-      $(".maxTiepNhan").empty()
+      $(".buttoneditMaxXe").attr("data-dismiss", "modal");
+      suaTiepNhanXeToiDa(editMaxXe)
       Toastify({
         text: "Thay đổi số xe tối đa thành công",
         backgroundColor: "#0000008f",
         className: "info",
       }).showToast();
-      $(".maxTiepNhan").append(`<span>${editMaxXe}</span>`);
     });
 
     $(".themHieuXe").click(function (e) {
       e.preventDefault();
-      console.log("xu xy them hieu xe");
     });
   } catch (error) {
     console.log(error);
   }
 });
+
+}
+
+main();
