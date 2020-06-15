@@ -86,6 +86,94 @@ var oTo = (function () {
     })
   };
 
+  const deleteXe = function(info) {
+    return new Promise(function (resolve, reject) {
+      axios.delete(`${host}/xe`, info).then(data => {
+        resolve(data);
+      })
+        .catch(err => {
+          reject(err);
+        });
+    })
+  };
+
+  const getTienCong = function() {
+    return new Promise(function (resolve, reject) {
+      axios.get(`${host}/suaChua/tc`).then(data => {
+        resolve(data);
+      })
+        .catch(err => {
+          reject(err);
+        });
+    })
+  };
+
+  const getPhuTung = function() {
+    return new Promise(function (resolve, reject) {
+      axios.get(`${host}/suaChua/pt`).then(data => {
+        resolve(data);
+      })
+        .catch(err => {
+          reject(err);
+        });
+    })
+  };
+
+  const createSuaChua = function(info) {
+    return new Promise(function (resolve, reject) {
+      axios.post(`${host}/suaChua/`, info).then(data => {
+        resolve(data);
+      })
+        .catch(err => {
+          reject(err);
+        });
+    })
+  };
+
+  const deleteTienCong = function(info) {
+    return new Promise(function (resolve, reject) {
+      axios.delete(`${host}/suaChua/tc/${info.maTienCong}`).then(data => {
+        resolve(data);
+      })
+        .catch(err => {
+          reject(err);
+        });
+    })
+  };
+
+  const addTienCong = (info) => {
+    return new Promise(function (resolve, reject) {
+      axios.post(`${host}/suaChua/tc`, info).then(data => {
+        resolve(data);
+      })
+        .catch(err => {
+          reject(err);
+        });
+    })
+  };
+
+  const deletePhuTung = function(info) {
+    return new Promise(function (resolve, reject) {
+      axios.delete(`${host}/suaChua/pt/${info.maPhuTung}`).then(data => {
+        resolve(data);
+      })
+        .catch(err => {
+          reject(err);
+        });
+    })
+  };
+
+  const addPhuTung = (info) => {
+    return new Promise(function (resolve, reject) {
+      axios.post(`${host}/suaChua/pt`, info).then(data => {
+        resolve(data);
+      })
+        .catch(err => {
+          reject(err);
+        });
+    })
+  };
+
 
   var index = oTo = {
     getHX,
@@ -95,7 +183,15 @@ var oTo = (function () {
     createFix,
     getAllXe,
     createBill,
-    getXeby
+    getXeby,
+    deleteXe,
+    getTienCong,
+    getPhuTung,
+    createSuaChua,
+    deleteTienCong,
+    addTienCong,
+    deletePhuTung,
+    addPhuTung
   };
 
   return index;

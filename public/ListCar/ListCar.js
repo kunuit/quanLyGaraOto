@@ -68,7 +68,7 @@ async function main() {
   const getHX = await oTo.getHX();
   const arrHX = getHX.data.data;
 
-  const addEditModal = (item, hieuXe) => {
+  const addEditModal = (item) => {
     $(".modalAdd").empty();
     $(".modalAdd").append(`
   <div class="modal fade" id="modalEdit${item.BienSoXe}" tabindex="-1" role="dialog">
@@ -77,12 +77,6 @@ async function main() {
         <div class="modal-body text-center text-white">
           <h3>Sửa chi tiết thông tin xe</h3>
           <p>${item.BienSoXe}</p>
-        </div>
-        <div class="form-group mb-2">
-          <label for="newHieuXe">Hiệu xe</label>
-          <input type="text" class="form-control" name="newHieuXe" id="newHieuXe" aria-describedby="helpId"
-            placeholder="${item.hieuXe}">
-          <div class="error err-newHieuXe"></div>
         </div>
         <div class="form-group mb-2">
           <label for="newTenChuXe">Tên chủ xe</label>
@@ -97,13 +91,17 @@ async function main() {
           <div class="error err-newTienNo"></div>
         </div>
         <div class="modal-footer justify-content-end">
-          <button type="button" class="btn btn-white btn-sm mr-2" data-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-success btn-sm ml-2 buttonNewHieuXe">Sửa</button>
+        <button type="button" class="btn btn-white btn-sm mr-2" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-success btn-sm ml-2 buttonEditXe">Sửa</button>
         </div>
       </div>
     </div>
   </div>
   `);
+    $(".buttonEditXe").click(function (e) {
+      e.preventDefault();
+      console.log("object");
+    });
   };
 
   const addDeleteModal = (item) => {
@@ -120,18 +118,33 @@ async function main() {
         <p  class="text-center">${item.BienSoXe} ?</p>
         <div class="modal-footer justify-content-end">
           <button type="button" class="btn btn-white btn-sm mr-2" data-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-success btn-sm ml-2 buttonNewHieuXe">xóa</button>
+          <button type="button" class="btn btn-success btn-sm ml-2 buttonDeleteXe">xóa</button>
         </div>
       </div>
     </div>
   </div>
   `);
+    $(".buttonDeleteXe").click(function (e) {
+      e.preventDefault();
+      $(".buttonDeleteXe").attr("data-dismiss", "modal");
+      oTo.deleteXe({bienSoXe: item.BienSoXe}).then((data) => {
+        if (data.status == 200) {
+          Toastify({
+            text: "xóa thành công",
+            backgroundColor: "#0000008f",
+            className: "info",
+          }).showToast();
+          main()
+        }
+      });
+    });
   };
 
   $(document).ready(function () {
+    $(".tbody").empty()
     arrXe.map((item, index) => {
-      console.log(item, arrHX)
-      const hieuxe = arrHX.filter(i => item.MaHX == i.MaHX)
+      console.log(item, arrHX);
+      const hieuxe = arrHX.filter((i) => item.MaHX == i.MaHX);
       $(".tbody").append(`
     <tr>
               <td class="text-center">${index + 1}</td>
@@ -146,7 +159,9 @@ async function main() {
                   <div class="ripple-container"></div>
                 </button>
                 <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-just-icon btn-sm btnDelete${index}"
-                  data-toggle="modal" data-target="#modalDelete${item.BienSoXe}">
+                  data-toggle="modal" data-target="#modalDelete${
+                    item.BienSoXe
+                  }">
                   <i class="material-icons">close</i>
                   <div class="ripple-container">
                   </div>
@@ -157,7 +172,7 @@ async function main() {
 
       $(`.btnEdit${index}`).click(function (e) {
         e.preventDefault();
-        addEditModal(item,hieuxe[0].TenHX);
+        addEditModal(item, hieuxe[0].TenHX);
       });
       $(`.btnDelete${index}`).click(function (e) {
         e.preventDefault();
