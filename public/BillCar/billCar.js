@@ -80,7 +80,7 @@ async function main() {
           $(`.err-soTienThu`).append(`! tiền thu <= tiền nợ`);
           throw ({ errForm: "Thu <= No" });
         }
-          // thuTien({ bienSo, soTienThu });
+          thuTien({ bienSo, soTienThu });
           Toastify({
             text: "Thu tiền thành công",
             backgroundColor: "#0000008f",

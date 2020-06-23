@@ -1,4 +1,7 @@
-localStorage.setItem("ngayNay", 15);
+//fix đây trước khi thuyết trình
+let dateNow = new Date();
+let getDate = dateNow.getDate();
+localStorage.setItem("ngayNay", getDate);
 function setNewDate() {
   let dateNow = new Date();
   let getDate = dateNow.getDate();
@@ -9,11 +12,11 @@ function setNewDate() {
 }
 
 function themMoiHieuXe(hieuXe) {
-  console.log(hieuXe)
+  console.log(hieuXe);
   oTo.createHX({ hieuXe }).then((data) => {
-    if(data.status == 200){
+    if (data.status == 200) {
       main();
-      return
+      return;
     }
   });
 }
@@ -47,9 +50,10 @@ function tiepNhanXe(info) {
       maHX: hieuXe,
       ngayTiepNhan,
     })
-    .then((data) => {
+    .then(async (data) => {
+      console.log(data);
       if (data.data.code == 200) {
-        localStorage.setItem("soXeTiepNhanTrongNgay", soXeDaTiepNhan + 1);
+        await localStorage.setItem("soXeTiepNhanTrongNgay", soXeDaTiepNhan + 1);
         location.reload();
       }
     });
@@ -83,6 +87,7 @@ async function main() {
 
     // Sliders Init
     // materialKit.initSliders()
+    $(".xeSelection").empty();
     arrHX.map((item) => {
       $(".xeSelection").append(
         `<option value='${item.MaHX}'>${item.TenHX}</option>`
@@ -122,7 +127,12 @@ async function main() {
         checkNull(diaChi, "err-diaChi");
         // check sửa xe tối đa
         if (maxXeTiepNhan == soXeDaTiepNhan) {
-          throw { errTiepNhan: "Đã tiếp nhân đủ xe trong ngày" };
+          Toastify({
+            text: "Đã tiếp nhân đủ xe trong ngày",
+            backgroundColor: "red",
+            className: "info",
+          }).showToast();
+          throw new Error({ errTiepNhan: "Đã tiếp nhân đủ xe trong ngày" });
         }
         // gửi lên server
         tiepNhanXe({
@@ -141,14 +151,14 @@ async function main() {
           backgroundColor: "#0000008f",
           className: "info",
         }).showToast();
-        return
+        return;
       });
 
       $(".buttonNewHieuXe").click(function (e) {
         e.preventDefault();
-        $("#newHieuXe").empty()
+        $("#newHieuXe").empty();
         let newHieuXe = $("#newHieuXe").val();
-        console.log(newHieuXe)
+        console.log(newHieuXe);
         checkNull(newHieuXe, "err-newHieuXe");
         themMoiHieuXe(newHieuXe);
         $(".buttonNewHieuXe").attr("data-dismiss", "modal");
@@ -157,7 +167,7 @@ async function main() {
           backgroundColor: "#0000008f",
           className: "info",
         }).showToast();
-        return
+        return;
       });
 
       $(".buttoneditMaxXe").click(function (e) {
@@ -178,12 +188,12 @@ async function main() {
         e.preventDefault();
       });
     } catch (error) {
+      console.log(error);
       Toastify({
         text: error,
         backgroundColor: "red",
         className: "info",
       }).showToast();
-      console.log(error);
     }
   });
   return;

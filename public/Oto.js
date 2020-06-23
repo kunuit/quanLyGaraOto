@@ -88,7 +88,8 @@ var oTo = (function () {
 
   const deleteXe = function(info) {
     return new Promise(function (resolve, reject) {
-      axios.delete(`${host}/xe`, info).then(data => {
+      console.log(info)
+      axios.delete(`${host}/xe/${info.bienSoXe}`).then(data => {
         resolve(data);
       })
         .catch(err => {
