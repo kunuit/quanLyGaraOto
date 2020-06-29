@@ -1,7 +1,7 @@
 //fix đây trước khi thuyết trình
-let dateNow = new Date();
-let getDate = dateNow.getDate();
-localStorage.setItem("ngayNay", getDate);
+ if(!localStorage.getItem("ngayNay")){
+   localStorage.setItem("ngayNay", 24);
+ }
 function setNewDate() {
   let dateNow = new Date();
   let getDate = dateNow.getDate();
@@ -54,6 +54,11 @@ function tiepNhanXe(info) {
       console.log(data);
       if (data.data.code == 200) {
         await localStorage.setItem("soXeTiepNhanTrongNgay", soXeDaTiepNhan + 1);
+        await Toastify({
+          text: "Tiếp nhận thành công",
+          backgroundColor: "#0000008f",
+          className: "info",
+        }).showToast();
         location.reload();
       }
     });
@@ -146,11 +151,7 @@ async function main() {
           diaChi,
           soXeDaTiepNhan,
         });
-        Toastify({
-          text: "Tiếp nhận thành công",
-          backgroundColor: "#0000008f",
-          className: "info",
-        }).showToast();
+        
         return;
       });
 

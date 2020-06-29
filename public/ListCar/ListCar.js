@@ -1,65 +1,3 @@
-const arrXe = [
-  {
-    bienSo: "29A-999.90",
-    hieuXe: "Ford",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3.000.000",
-  },
-  {
-    bienSo: "29A-999.91",
-    hieuXe: "Ford",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3.000.000",
-  },
-  {
-    bienSo: "29A-999.92",
-    hieuXe: "Ford",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3.000.000",
-  },
-  {
-    bienSo: "29A-999.93",
-    hieuXe: "Ford",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3.000.000",
-  },
-  {
-    bienSo: "29A-999.94",
-    hieuXe: "Ford",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3.000.000",
-  },
-  {
-    bienSo: "29A-999.95",
-    hieuXe: "Ford",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3.000.000",
-  },
-  {
-    bienSo: "29A-999.96",
-    hieuXe: "Ford",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3.000.000",
-  },
-  {
-    bienSo: "29A-999.97",
-    hieuXe: "Ford",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3.000.000",
-  },
-  {
-    bienSo: "29A-999.98",
-    hieuXe: "Ford",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3.000.000",
-  },
-  {
-    bienSo: "29A-999.99",
-    hieuXe: "Ford",
-    tenChuXe: "Vũ Xuân Cường",
-    tienNo: "3.000.000",
-  },
-];
 
 async function main() {
   const getXe = await oTo.getAllXe();
@@ -141,44 +79,75 @@ async function main() {
   };
 
   $(document).ready(function () {
-    $(".tbody").empty()
-    arrXe.map((item, index) => {
-      console.log(item, arrHX);
-      const hieuxe = arrHX.filter((i) => item.MaHX == i.MaHX);
-      $(".tbody").append(`
-    <tr>
-              <td class="text-center">${index + 1}</td>
-              <td class="text-center">${item.BienSoXe}</td>
-              <td class="text-center">${hieuxe[0].TenHX}</td>
-              <td class="text-center">${item.TenChuXe}</td>
-              <td class="text-center">${item.TienNo}</td>
-              <td class="td-actions text-center">
-                <button type="button" rel="tooltip" class="btn btn-success btn-round btn-just-icon btn-sm btnEdit${index}"
-                  data-toggle="modal" data-target="#modalEdit${item.BienSoXe}">
-                  <i class="material-icons">edit</i>
-                  <div class="ripple-container"></div>
-                </button>
-                <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-just-icon btn-sm btnDelete${index}"
-                  data-toggle="modal" data-target="#modalDelete${
-                    item.BienSoXe
-                  }">
-                  <i class="material-icons">close</i>
-                  <div class="ripple-container">
-                  </div>
-                </button>
-              </td>
-            </tr>
-    `);
+    const addData = (arrXe,arrHX) => {
 
-      $(`.btnEdit${index}`).click(function (e) {
-        e.preventDefault();
-        addEditModal(item, hieuxe[0].TenHX);
+      $(".tbody").empty()
+      arrXe.map((item, index) => {
+        console.log(item, arrHX);
+        const hieuxe = arrHX.filter((i) => item.MaHX == i.MaHX);
+        $(".tbody").append(`
+      <tr>
+                <td class="text-center">${index + 1}</td>
+                <td class="text-center">${item.BienSoXe}</td>
+                <td class="text-center">${hieuxe[0].TenHX}</td>
+                <td class="text-center">${item.TenChuXe}</td>
+                <td class="text-center">${item.TienNo}</td>
+                <td class="td-actions text-center">
+                  <button type="button" rel="tooltip" class="btn btn-success btn-round btn-just-icon btn-sm btnEdit${index}"
+                    data-toggle="modal" data-target="#modalEdit${item.BienSoXe}">
+                    <i class="material-icons">edit</i>
+                    <div class="ripple-container"></div>
+                  </button>
+                  <button type="button" rel="tooltip" class="btn btn-danger btn-round btn-just-icon btn-sm btnDelete${index}"
+                    data-toggle="modal" data-target="#modalDelete${
+                      item.BienSoXe
+                    }">
+                    <i class="material-icons">close</i>
+                    <div class="ripple-container">
+                    </div>
+                  </button>
+                </td>
+              </tr>
+      `);
+  
+        $(`.btnEdit${index}`).click(function (e) {
+          e.preventDefault();
+          addEditModal(item, hieuxe[0].TenHX);
+        });
+        $(`.btnDelete${index}`).click(function (e) {
+          e.preventDefault();
+          addDeleteModal(item);
+        });
       });
-      $(`.btnDelete${index}`).click(function (e) {
-        e.preventDefault();
-        addDeleteModal(item);
-      });
-    });
+    }
+
+    addData(arrXe,arrHX)
+
+    const timMaHX = (name) => {
+      let objTmp
+      arrHX.map(item => {
+        if(item.TenHX.toLowerCase() == name.toLowerCase()) {
+          objTmp = item
+        }
+      })
+      return objTmp
+    }
+
+    $('.btn-search').click(async function(e) {
+      e.preventDefault();
+      let iSearch = $('.iSearch').val()
+      let HX = timMaHX(iSearch)
+      if(HX){
+        await oTo.getXeby(HX.MaHX).then(data => {
+            addData(data.data.data, arrHX)
+        })
+      }else {
+        await oTo.getXeby(iSearch).then(data => {
+          addData(data.data.data, arrHX)
+        })
+      }
+
+    })
   });
 }
 
