@@ -131,7 +131,7 @@ async function main() {
         checkNull(ngayTiepNhan, "err-ngayTiepNhan");
         checkNull(diaChi, "err-diaChi");
         // check sửa xe tối đa
-        if (maxXeTiepNhan == soXeDaTiepNhan) {
+        if (maxXeTiepNhan <= soXeDaTiepNhan) {
           Toastify({
             text: "Đã tiếp nhân đủ xe trong ngày",
             backgroundColor: "red",
